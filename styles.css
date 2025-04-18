@@ -1,0 +1,344 @@
+/*------------------------------------
+  Variables & Reset
+------------------------------------*/
+:root {
+    /* Couleurs */
+    --color-primary: #005A9C;       /* bleu énergie */
+    --color-accent: #6BBF59;        /* vert durable */
+    --color-bg: #F5F7FA;            /* fond clair */
+    --color-surface: #FFFFFF;       /* surface cartes */
+    --color-text: #1A1A1A;          /* texte principal */
+    --color-muted: #6C6C6C;         /* texte secondaire */
+    --color-border: #E1E4E8;        /* bordures légères */
+    --color-overlay: rgba(0,0,0,0.6);/* fond modal */
+    --transition: 0.3s ease-in-out;
+  
+    /* Typographie */
+    --font-base: 'Helvetica Neue', Arial, sans-serif;
+    --fs-small: 0.875rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.5rem;
+  
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+  
+    /* Breakpoints */
+    --bp-tablet: 768px;
+    --bp-desktop: 1024px;
+  }
+  
+  /* Reset minimaliste */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-base);
+    font-size: var(--fs-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+  }
+  
+  /* Utility */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px,1px,1px,1px);
+  }
+  
+  /*------------------------------------
+    Header & Navigation
+  ------------------------------------*/
+  .site-header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--space-sm) 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo img {
+    height: 40px;
+  }
+  .nav-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    position: relative;
+  }
+  .nav-toggle .hamburger,
+  .nav-toggle .hamburger::before,
+  .nav-toggle .hamburger::after {
+    display: block;
+    background-color: white;
+    height: 3px;
+    border-radius: 2px;
+    transition: var(--transition);
+    content: '';
+    position: absolute;
+    width: 100%;
+  }
+  .nav-toggle .hamburger {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .nav-toggle .hamburger::before {
+    top: -8px;
+  }
+  .nav-toggle .hamburger::after {
+    bottom: -8px;
+  }
+  .site-nav {
+    display: none;
+  }
+  .site-nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-lg);
+  }
+  .site-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: var(--fs-base);
+    transition: var(--transition);
+  }
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] {
+    text-decoration: underline;
+  }
+  
+  /* Affichage nav sur desktop */
+  @media (min-width: var(--bp-desktop)) {
+    .nav-toggle {
+      display: none;
+    }
+    .site-nav {
+      display: block;
+    }
+  }
+  
+  /*------------------------------------
+    Search Section
+  ------------------------------------*/
+  .search-section {
+    background-color: var(--color-surface);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  #search-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  #search-input {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--fs-base);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    transition: var(--transition);
+  }
+  #search-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+  }
+  
+  /*------------------------------------
+    Grille exposants
+  ------------------------------------*/
+  .exhibitors-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+  }
+  @media (min-width: var(--bp-tablet)) {
+    .exhibitors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: var(--bp-desktop)) {
+    .exhibitors-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /*------------------------------------
+    Carte exposant
+  ------------------------------------*/
+  .exhibitor-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: transform var(--transition), box-shadow var(--transition);
+    display: flex;
+    flex-direction: column;
+  }
+  .exhibitor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  .exhibitor-card header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--fs-lg);
+  }
+  .exhibitor-card .card-body {
+    padding: var(--space-md);
+    flex: 1;
+  }
+  .exhibitor-card .card-body p {
+    font-size: var(--fs-small);
+    color: var(--color-muted);
+    margin-bottom: var(--space-sm);
+  }
+  .exhibitor-card .card-footer {
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .exhibitor-card .favorite-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--fs-lg);
+    color: var(--color-accent);
+  }
+  .exhibitor-card .favorite-btn[aria-pressed="true"] {
+    color: #e74c3c;
+  }
+  
+  /*------------------------------------
+    Pagination
+  ------------------------------------*/
+  .pagination {
+    text-align: center;
+    padding: var(--space-md) 0;
+  }
+  .pagination ul {
+    list-style: none;
+    display: inline-flex;
+    gap: var(--space-sm);
+  }
+  .pagination a,
+  .pagination span {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: var(--transition);
+  }
+  .pagination a:hover {
+    background-color: var(--color-bg);
+  }
+  .pagination .active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+  .pagination .disabled {
+    color: var(--color-border);
+    pointer-events: none;
+  }
+  
+  /*------------------------------------
+    Modal fiche exposant
+  ------------------------------------*/
+  /*------------------------------------
+  Modal fiche exposant
+------------------------------------*/
+/*------------------------------------
+  Modal fiche exposant
+------------------------------------*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    /* On masque toujours, on forcera ci‑dessous l’affichage */
+    display: none !important;
+  
+    background-color: var(--color-overlay);
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm);
+    z-index: 1000;
+  }
+  
+  /* On s’assure qu’avec hidden, c’est bien masqué */
+  .modal[hidden] {
+    display: none !important;
+  }
+  
+  /* Dès que hidden est enlevé (modal.hidden = false), on affiche */
+  .modal:not([hidden]) {
+    display: flex !important;
+  }
+  
+  .modal-content {
+    background-color: var(--color-surface);
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: none;
+    border: none;
+    font-size: var(--fs-xl);
+    color: var(--color-muted);
+    cursor: pointer;
+  }
+  
+  
+  
+  /*------------------------------------
+    Responsive Nav Toggle
+  ------------------------------------*/
+  .is-nav-open .site-nav {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primary);
+  }
+  
