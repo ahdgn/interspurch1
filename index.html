@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Titre & SEO -->
+  <title>Guide des Exposants – Intersolar China 2025</title>
+  <meta name="description" content="Tout le guide des exposants Intersolar China 2025 : recherche, filtres, favoris et fiches détaillées.">
+  <meta name="theme-color" content="#005A9C">
+
+  <!-- Favicon & Manifest -->
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo" aria-label="Accueil Intersolar">
+        <img src="img/logo.png" alt="Logo Intersolar China">
+      </a>
+      <button class="nav-toggle" aria-label="Ouvrir le menu">
+        <span class="hamburger"></span>
+      </button>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="/" aria-current="page">Accueil</a></li>
+          <li><a href="#categories">Catégories</a></li>
+          <li><a href="#exposants">Exposants</a></li>
+          <li><a href="#favoris">Favoris</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Recherche -->
+    <section class="search-section">
+      <form id="search-form" role="search" aria-label="Recherche d’exposants">
+        <label for="search-input" class="visually-hidden">Rechercher un exposant</label>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Rechercher un exposant…"
+          autocomplete="off"
+        />
+      </form>
+    </section>
+
+    <!-- Grille des exposants -->
+    <section
+      id="exhibitors"
+      class="exhibitors-grid"
+      aria-label="Liste des exposants"
+    >
+      <!-- Les cartes seront injectées ici par JS -->
+    </section>
+
+    <!-- Pagination -->
+    <nav class="pagination" aria-label="Pagination des exposants">
+      <ul id="pagination-list">
+        <!-- Injecté par JS -->
+      </ul>
+    </nav>
+  </main>
+
+  <!-- Modal fiche exposant -->
+  <div
+    id="exhibitor-modal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    hidden
+  >
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Fermer la fenêtre">&times;</button>
+      <div id="modal-body"><!-- Injecté par JS --></div>
+    </div>
+  </div>
+
+  <!-- Scripts JS -->
+  <script src="js/db.js" defer></script>
+  <script src="js/ui.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

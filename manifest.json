@@ -1,0 +1,21 @@
+{
+  "name": "Intersolar China Guide",
+  "short_name": "Intersolar",
+  "description": "Guide des exposants du salon Intersolar China 2025",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F5F7FA",
+  "theme_color": "#005A9C",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
